@@ -2,25 +2,21 @@
 const prev = document.querySelector(".previous");
 const next = document.querySelector(".next");
 const buttons = document.querySelector(".buttons");
-const slide1 = document.querySelector(".slide1");
-const slide2 = document.querySelector(".slide2");
+const slides = document.querySelectorAll(".slide");
 
-//Function on click Previous & Next
+//Change slides when button is clicked
 
-function prevSlide(e) {
-  if (e.currentTarget.className === "previous") {
-    document.querySelector(".slide2").style.display = "none";
-    document.querySelector(".slide1").style.display = "flex";
-  }
-}
+// forEach to remove active class (display:none on slides otherwise)
 
-function nextSlide(e) {
-  if (e.currentTarget.className === "next") {
-    document.querySelector(".slide1").style.display = "none";
-    document.querySelector(".slide2").style.display = "flex";
-  }
-}
-//add event listeners
+//For loop maybe? If/Else is not very dynamic but works if no more slides are added
 
-prev.addEventListener("click", prevSlide);
-next.addEventListener("click", nextSlide);
+//Event Listeners
+
+buttons.addEventListener("click", (e) => {
+  console.log(e.target);
+  slides.forEach(() => {
+    if (slides.classList.contains("active")) {
+      slides.classList.remove("active");
+    }
+  });
+});
